@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="slf4j-api-1.7.21">
+    <CLASSES>
+      <root url="jar://D:/Applications/pluginPackages/slf4j-api-1.7.21.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://D:/Applications/pluginPackages/commons-lang3-3.8-bin.zip!/commons-lang3-3.8/apidocs" />
+    </JAVADOC>
+    <SOURCES />
+  </library>
+</component>

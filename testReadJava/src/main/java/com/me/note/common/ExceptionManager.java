@@ -4,19 +4,19 @@
  * ------------------------------------------------------------------
  *       Product: ASR
  *   Module Name: alarm-rule
- *  Date Created: 2018-11-27
+ *  Date Created: 2018-10-22
  *   Description:
  * ------------------------------------------------------------------
  * Modification History
  * DATE            Name           Description
  * ------------------------------------------------------------------
- * 2018-11-27      sx-9524
+ * 2018-10-22      sx-9524
  * ------------------------------------------------------------------
  */
-package com.me.note;
+package com.me.note.common;
 
-public class start {
-    public static void main(String[] args) {
-        System.out.println("Run test read java SUCCESS!");
+public class ExceptionManager {
+    public void retException(){
+        throw new RuntimeException();
     }
 }
