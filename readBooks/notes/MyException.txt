@@ -1,0 +1,35 @@
+Exception
+	分类1
+		检查性异常
+			用户错误或问题引起的，比如打开一个不存在的文件时
+		运行时异常(RuntimeException)
+			可能被程序员避免的异常
+		错误
+	分类2
+		不受检查异常(Unchecked Exception)
+			包括RuntimeException及其子类和Error
+		检查异常(Checked Exception)
+	抛出/捕获异常
+	关键字
+		try、catch、finally、throw、throws
+		throws
+			不受检查异常则可以不抛出异常，会在运行时被系统抛出
+			必须申明方法可抛出的任何检查异常
+			仅当抛出了异常，该方法的调用者才必须处理或者重新抛出该异常
+		finally
+			try{}里面有return语句，则finally{}中的code也会执行，会在return之前执行
+			finally{}改变return的返回值是不好的
+	编写多重catch语句块注意事项和经验总结
+		顺序：先小后大，即先子类后父类
+		处理运行时异常时，采用逻辑去合理规避同时辅助try-catch处理
+		在多重catch块后面，可以加一个catch(Exception)来处理可能会被遗漏的异常
+		对于不确定的代码，也可以加上try-catch，处理潜在异常
+		尽量去处理异常，切忌只是简单的调用printTrace()去打印输出
+		具体如何处理异常，要根据不同的业务需求和异常类型去决定
+		尽量添加finally语句块去释放占用的资源
+	常见的运行时异常
+		ArithmeticException（算术异常）
+		ClassCastException（类型转换异常）
+		IllegalArgumentException（非法参数异常）
+		NullPointerException（空指针异常）
+		SecurityException（安全异常）

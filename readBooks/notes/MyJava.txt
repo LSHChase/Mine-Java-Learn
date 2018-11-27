@@ -1,0 +1,15 @@
+Java类加载器（classloader）
+	分层结构：
+		引导类加载器（Bootstrap Class Loader）：加载rt.jar里面的类
+		扩展类加载器（Extension Class Loader）：加载扩展目录下的jar文件中的类
+		系统类加载器（System Class Loader）：在classpath上搜索类加载器
+		用户自定义的类加载器（User-defined Class Loader）：从用户指定的路径加载类
+	特点：
+		通用性，高效性，平台移植性，安全性
+	Java技术规范：
+		EJB,JTA,JDBC,JMS等
+	访问控制级别
+		private，public，protected，package private（无修饰符）
+	在模块化方面的局限：
+		底层代码的可见性控制
+		classpath的局限

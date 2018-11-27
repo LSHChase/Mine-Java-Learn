@@ -1,0 +1,86 @@
+OSGI：开放服务网管协议，一个由OSGi发起的以Java为技术平台的动态模块化规范
+	优秀的特性：
+		动态性（热插拔），模块化，可扩展能力，可复用性，高效性，稳定性
+	缺点：
+		与一些Java EE项目中使用比较多的框架整合比较困难，如Spring MVC，Struts2等
+		管理端不够强大
+	服务：日志，配置管理，HTTP服务（运行Servlet），XML解析，设备访问，软件包管理，许可管理，用户管理，IO连接，Jini和UPnP等
+	模块化：模块化，版本化，面向服务的设计
+	热插拔：模块/bundle的热插拔，可以实现更新和升级模块/bundle而无需重启整个系统
+	模块化的难点：主要体现在模块之间的类访问的隔离，版本选择两个方面
+	设计模块化系统需要掌握ClassLoader机制，模块之间类的交互方法（包括对外提供可访问的package，访问其他模块提供的package，选择合适的版本的package等）
+	bundle：自描述的jar文件，OSGi中是部署的最小单位
+		在manifest文件中，有对本bundle的标识，提供的功能（Export-package）及依赖性（Import-package/Require-bundle）的定义
+		类隔离机制：每个bundle均为独立的ClassLoader，是Java动态化实现的基础。
+		生命周期：uninstalled，installed，resolved，starting，stopping，active
+		动态更新，动态加载，动态下载，动态监听机制
+	Service：允许每个bundle对外分享一组服务，其他bundle都可以调用这些接口的服务
+		功能：
+			Export functionality from a bundle to other bundles
+			Import functionality from other bundles
+			Register listeners for events from other bundles
+			Expose external devices，such as UPnP devices or even hardware，to other OSGi bundles。See the Device and UPnP APIs
+			Expose Java code running in OSGi to an external network，e.g. via the UPnP or SOAP protocols
+			Bundle configuration，using the Configuration Manager
+			通常会把接口和实现分开。接口放在一个bundle里面，实现（service）放到另一个bundle里面。也可以是提供一个jar包，里面定义了扩展接口，然后规定新的扩展的bundle必须实现该jar包里面定义的interface
+		service之间的交换方式和注册方式：
+			通过bundleContext.registerService注册服务，然后通过bundleContext.getServiceReference获取服务（不推荐）
+			使用监听器listeners
+				ServiceListener和ServiceTracker提供bundle和service的动态监听，ServiceTracker可以动态监听未来的bundle和service（一般推荐）
+			通过Declarative Service（OSGi DS，或者Spring Dynamic Module（DM）的方式）（重点推荐）
+	动态加载删除bundle
+		使用监听器listeners
+		通过Declarative Service（OSGi DS，或者Spring Dynamic Module（DM）的方式）
+	分布式OSGi：
+		Zookeeper：Hadoop的一个子项目，一个针对大型分布式系统的可靠协调系统
+			提供的功能：
+				配置维护，名字服务，分布式同步，组服务等
+			分布式OSGi在Discovery（用来发现和侦听分布式的远端可用的Endpoints）这一块使用了Zookeeper
+	子规范：
+		1.Framework规范：OSGi的核心，提供一个安全的可管理的Java Framework来部署可扩展的Java 服务
+		2.Package Admin Service规范：管理不同的bundle之间的引用关系
+		3.Start Level规范：定义了启动和停止一个OSGi Service Platform时，不同的bundles的启动或者停止的先后顺序
+		4.Permiss Admin Service规范：bundle是否许可执行另外的bundle的代码
+		5.URL Handlers Service规范：怎样注册URL Schema
+		6.Log Service规范
+		7.Configuration Admin Service规范
+		8.Device Access Specification
+		9.User Admin Service Specification
+		10.IO Connector Service Specification
+		11.Http Service Specification
+		12.Preference Service Specification
+		13.Wire Admin Service Specification
+		14.XML Parser Service Specification
+		15.Metatype Specification
+		16.Service Tracker Specification
+		17.Mersurment and State Specification
+		18.Position Specification
+		19.Execution Environment Specification
+	分层：
+		Module Layer：模块层主要涉及包和共享代码
+		Lifecycle Layer：生命周期层主要涉及组件的运行时生命周期管理
+		Service Layer：服务层主要涉及模块间的交互和通信
+	模块层：
+		概念：控制jar包中的类的隐藏暴露的单元叫组件（bundle（jar包）），包含代码，资源文件和	元数据，并且jar包的物理边界也是运行时逻辑模块的封装边界
+		元数据组成：可读信息（可选），bundle标识符（必须），代码可见性（必须）
+	生命周期层：
+		一般程序：安装（install），执行，更新（update），移除（remove），停止（stop）
+		OSGi：installed，resolved，uninstalled，starting，active，stopping
+		API：BundleActivator（start，stop），BundleContext，Bundle三个核心接口组成
+	服务层：
+		服务提供者和服务使用者之间的一个契约。
+		OSGi：使用了面向服务的编程模型。有一个中心化的注册表，注册表遵从publish-find-bind模型
+	实现：OSGi联盟没有给出OSGi容器，第三方厂商容器：Apache Felix，Equinox，Spring DM等
+		Java实现：Apache Felix，Equinox，Spring DM，Knopflerfish
+		C++实现：CTK Plugin Framework，C++ Micro Services。
+		C实现：Apache Celix
+	Blueprint：
+		OSGi的IOC规范，来源于spring dm，主要有Aries和Gemini两套实现
+		以xml文档构建应用，但也有采用annotation方式，xml默认位置在OSGI-INF/blueprint下，也可以在manifest.mf里指定位置
+		状态：Graceperiod，created，fail
+		顶层节点：
+			<?xml version="1.0" encoding="UTF-8"?>
+			<blueprint xmlns=”http://www.osgi.org/xmlns/blueprint/v1.0.0”>
+			    ...
+			</blueprint>
+		在顶层节点下，可以定义bean节点，bean节点可以定义为bean或者bean工厂，从bean节点获取bean实例

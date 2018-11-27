@@ -1,0 +1,29 @@
+Log(推荐使用slf4j+logback):
+	级别:
+		OFF(关闭):最高级别，不输出日志
+		FATAL(致命):输出组非常严重的可能会导致应用中值的错误
+		ERROR(错误):输出错误，但应用还能继续运行
+			一般用来记录程序中发生的任何异常错误信息(Throwable)，或者记录业务逻辑出错
+		WARN(警告):输出可能潜在的危险情况
+			一般用来记录一些用户参数错误
+		INFO(信息):输出应用运行过程的详细信息
+			默认日志级别，记录程序运行中的一些有用的信息，比如程序的开始、结束、耗时、重要参数等信息，需要注意有选择性的有意义的输出
+		DEBUG(调试):输出更细致的对调试应用有用的信息
+			一般记录一些运行中的中间参数信息，只允许在开发环境开启，选择性在测试环境开启
+		TRACE(跟踪):输出更细致的程序运行轨迹
+		ALL(所有):输出所有级别的信息
+	输出大于或等于设置级别的日志
+	定义
+		private static final Logger LOG = LoggerFactory.getLogger(this.getClass());
+	使用参数化形式{}站位，[]进行参数隔离
+		LOG.debug("Save order with order no: [{}], and order amount: [{}]");
+			EM: logger.debug("Save order with order no: " + orderNo + ", and order amount: " + orderAmount);
+	错误的大日志方式
+		不要使用System.out.print..
+		不要使用e.printStackTrace()(本质上还是System.err输出到了控制台)
+		不要抛异常之后有输出异常日志，会造成重复输出
+		不要使用具体的日志实现类
+		没有输出全部错误信息
+		不要输出错误的日志级别
+		不要在千层循环中打印日志
+		禁止在线上环境开启debug
