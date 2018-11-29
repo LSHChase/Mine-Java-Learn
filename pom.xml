@@ -1,0 +1,66 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd ">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.chase.java-learn</groupId>
+    <artifactId>java-learn</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+    <name>Mine-Java-Lean</name>
+    <description>A maven project for learning java knowledge!</description>
+
+    <modules>
+        <module>code-knowledge</module>
+        <module>test</module>
+    </modules>
+
+    <build>
+
+        <outputDirectory>out</outputDirectory>
+        <directory>directory</directory>
+
+        <pluginManagement>
+            <plugins>
+                <!--             插件管理         -->
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+            <!--         插件                -->
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.8</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>1.9.13</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-core-asl</artifactId>
+            <version>1.9.13</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.8</version>
+        </dependency>
+    </dependencies>
+
+</project>
