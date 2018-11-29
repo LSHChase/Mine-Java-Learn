@@ -20,10 +20,10 @@ proguard/
 build/
 
 # Intellij project files
-#*.iml
+*.iml
 *.ipr
 *.iws
-#.idea
+.idea
 
 #gradle
 .gradle/
