@@ -1,0 +1,63 @@
+Java遍历树（http://www.cnblogs.com/toSeeMyDream/p/5816682.html）（二叉树和非二叉树都可以）
+				  A
+			   / 	 \
+			  B		  C
+			 / \    / | \
+			D 	E  F  G  H
+			     \
+				  I
+	1.深度优先遍历（DFS，Depth First Search）
+		对每一个可能的分分支路径深入到不能再深入为止，每个节点访问一次。上面例子遍历结果就是：A,B,D,E,I,C,F,G,H(假定先走子节点的左侧)。
+	 	使用栈(Stack)数据结构，先进后出。
+	 	遍历过程：
+	 		先将A节点压入栈中，stack(A)；
+	 		弹出A节点，将子节点C,B压入栈中，此时B在栈的顶部，stack(B,C)；
+	 		弹出B节点，将子节点E,D压入栈中，此时D在栈的顶部，stack(D,E,C)；
+	 		弹出D节点，无子节点，此时E在栈的顶部，stack(E,C)；
+	 		弹出E节点，将子节点I压入栈中，...，stack(I,C);
+	 		以此类推。
+	 	代码：
+		    public void depthFirst(){
+		    	//使用栈
+		        Stack<Map<String, Object>> nodeStack = new Stack<>();
+		        Map<String, Object> node = new HashMap<>();
+		        nodeStack.add(node);
+		        while (!nodeStack.isEmpty()){
+		            node = nodeStack.pop();
+		            System.out.println(node.toString());
+		            //获得该节点的子节点，对于二叉树就是获取二叉树的左右子节点
+		            List<Map<String, Object>> children = getChildren(node);
+		            if (null != children && !children.isEmpty()){
+		                for (Map child: children){
+		                    nodeStack.push(child);
+		                }
+		            }
+		        }
+		    }
+	2.广度优先遍历（BFS, Breadth First Search）
+		对每一层节点依次访问，访问完一层进入下一层，每个节点只能访问一次；上面的例子遍历结就是：A,B,C,D,E,F,G,H,I(假定每层节点从左到右访问)
+		使用队列(Queue)数据结构，先进先出；也可以使用双端队列，区别就是双端队列首尾都可以插入和弹出节点。
+		遍历过程：
+			先将A节点插入队列，queue(A)；
+			弹出A节点，将子节点B,C插入队列中，此时B在队列首，C在队列尾，queue(B,C)；
+			弹出B节点，将子节点D,E插入队列中，此时C在队列首，E在队列尾，queue(C,D,E)；
+			弹出C节点，将子节点F,G,H插入队列中，此时D在队列首，H在队列尾，queue(D,E,F,G,H)；
+			弹出D节点，无子节点，此时E在队列首，H在队列尾，queue(E,F,G,H)；
+			依次类推。
+		代码：
+		    public void breadthFirst(){
+		        //使用双端队列，等同于队列
+		        Deque<Map<String, Object>> nodeDeque = new ArrayDeque<>();
+		        Map<String, Object> node = new HashMap<>();
+		        while (!nodeDeque.isEmpty()){
+		            node = nodeDeque.peekFirst();
+		            System.out.println(node.toString());
+		            //获得该节点的子节点
+		            List<Map<String, Object>> children = getChildren(node);
+		            if (null != children && !children.isEmpty()){
+		                for (Map child: children){
+		                    nodeDeque.add(child);
+		                }
+		            }
+		        }
+		    }

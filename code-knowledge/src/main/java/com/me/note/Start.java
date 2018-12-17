@@ -17,15 +17,15 @@ package com.me.note;
 
 import com.me.note.common.CalculationResults;
 import com.me.note.manager.Manager;
+import com.me.note.test.TestDate;
+import com.me.note.test.TestEnum;
 import com.me.note.test.TestStatic;
+import com.me.note.test.TestTraverseTree;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Start {
 
@@ -108,7 +108,16 @@ public class Start {
 //        TestMap testMap = new TestMap();
 //        testMap.testAll();
 
-        TestStatic testStatic = new TestStatic();
-        testStatic.testFunction();
+//        TestStatic testStatic = new TestStatic();
+//        testStatic.testFunction();
+
+//        TestEnum testEnum = new TestEnum();
+//        testEnum.testAll();
+
+//        TestDate testDate = new TestDate();
+//        testDate.testAll();
+
+        TestTraverseTree traverseTree = new TestTraverseTree();
+        traverseTree.testAll();
     }
 }
