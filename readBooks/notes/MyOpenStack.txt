@@ -1,0 +1,8 @@
+AWS(Amazon Web Service):包括存储空间、计算能力等资源服务的Web Service
+EC2(Elastic Compute Cloud): 弹性计算云
+OpenStack(Rackspace和NASA联手成立的一个开源项目)。
+	是一个操作系统，一套软件，一套IaaS(Infrastructure as a Service)软件
+基础设施资源，主要包括计算、存储、网络三部分，也就是CPU、硬盘、网卡
+OpenStack的优点：
+	快速，灵活，便宜
+大咖：陈沙克、何明桂，孔令贤，Cloudman

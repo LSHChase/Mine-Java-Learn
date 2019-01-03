@@ -16,12 +16,22 @@
 package com.me.note.test;
 
 import com.alibaba.fastjson.JSONObject;
+import com.me.note.common.TestModle;
 import com.me.note.entity.Rule;
 
-public class TestMap {
+import java.util.HashMap;
+import java.util.Map;
+
+public class TestMap extends TestModle {
+
+    private static Map<String, Rule> ruleMap = new HashMap<>();
+
+    @Override
     public void testAll(){
 //        object2Map();
-        test();
+//        test();
+//        testModifyMap();
+        testConvert2List();
     }
 
 
@@ -48,7 +58,7 @@ public class TestMap {
     }
 
 
-    public void test(){
+    private void test(){
 
         Object json = "{\n" +
                 "    \"departmentId\": \"1\",\n" +
@@ -147,5 +157,32 @@ public class TestMap {
         JSONObject jsonObject = JSONObject.parseObject(json.toString());
         Object departmentId = jsonObject.get("departmentId");
         System.out.println(departmentId);
+    }
+
+    private void testModifyMap(){
+        Rule rule = new Rule();
+        rule.setRuleId("1");
+        rule.setRuleName("1-name");
+        rule.setUserIds("1-userIds");
+
+        ruleMap.put("1", rule);
+        System.out.println(ruleMap.get("1"));
+
+        Rule newRule = ruleMap.get("1");
+        newRule.setRuleName("new-1-rule");
+
+        System.out.println(ruleMap.get("1"));
+    }
+
+    private void testConvert2List(){
+        Map<Integer, String> map = new HashMap<>();
+        map.put(1, "a");
+        map.put(2, "b");
+        map.put(3, "c");
+
+//        List<String> list = new ArrayList<>(map.values());
+//        System.out.println(list);
+
+//        System.out.println((List<String>)map.values());  无法直接转换
     }
 }

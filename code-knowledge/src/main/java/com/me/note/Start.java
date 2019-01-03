@@ -17,10 +17,7 @@ package com.me.note;
 
 import com.me.note.common.CalculationResults;
 import com.me.note.manager.Manager;
-import com.me.note.test.TestDate;
-import com.me.note.test.TestEnum;
-import com.me.note.test.TestStatic;
-import com.me.note.test.TestTraverseTree;
+import com.me.note.test.*;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -85,7 +82,7 @@ public class Start {
 
         //测试regex
 //        TestRegex testRegex = new TestRegex();
-//        testRegex.testAllRegex();
+//        testRegex.testAll();
 
         //测试json数据与对象的转换
 //        JsonWithObject jsonWithObject = new JsonWithObject();
@@ -117,7 +114,12 @@ public class Start {
 //        TestDate testDate = new TestDate();
 //        testDate.testAll();
 
-        TestTraverseTree traverseTree = new TestTraverseTree();
-        traverseTree.testAll();
+//        TestTraverseTree traverseTree = new TestTraverseTree();
+//        traverseTree.testAll();
+
+//        System.out.println("protect_group");
+
+        TestOperateFiles operateFiles = new TestOperateFiles();
+        operateFiles.testAll();
     }
 }

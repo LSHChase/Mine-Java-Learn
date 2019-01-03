@@ -15,17 +15,21 @@
  */
 package com.me.note.test;
 
+import com.me.note.common.TestModle;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class TestRegex {
+public class TestRegex extends TestModle {
 
-    public void testAllRegex(){
+    @Override
+    public void testAll(){
 //        testRegulation();
-        testMail();
+//        testMail();
+        testTime();
     }
 
     //测试规则内容
@@ -124,5 +128,20 @@ public class TestRegex {
                 System.out.println(ipDomain + "\n" + matcher.find());
             }
         }
+    }
+
+    //测试时分秒
+    private void testTime(){
+
+        String[] times = {"10:00", "00:00", "1:59", "23:59", "24:00", "12:60", "13:99", "7:66", "08:49", "?9:00"};
+
+        String regex = "^((([01]?[0-9])|(2[0-3])):([0-5][0-9]))$";
+
+        Pattern pattern = Pattern.compile(regex);
+        for (String time: times) {
+            Matcher matcher = pattern.matcher(time);
+            System.out.println(time + ": " +matcher.find());
+        }
+
     }
 }

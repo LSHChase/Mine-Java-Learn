@@ -1,9 +1,11 @@
 package com.me.note.test;
 
+import com.me.note.common.TestModle;
+
 import java.io.File;
 import java.util.*;
 
-public class TestTraverseTree {
+public class TestTraverseTree extends TestModle {
 
     private static final String FILE_DIR = "/home/sx-9524/workspace/files";
 
@@ -12,6 +14,7 @@ public class TestTraverseTree {
 
     private String rootDir;
 
+    @Override
     public void testAll(){
 //        testRecursive(FILE_DIR);
         testDepthFirst();
@@ -30,7 +33,7 @@ public class TestTraverseTree {
         //get all files and directories below this file
         File[] files = file.listFiles();
         //if files is null, return it;
-        if (null == file){
+        if (null == files){
             return;
         }
         //traverse all files below files
