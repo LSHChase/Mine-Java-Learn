@@ -5,22 +5,28 @@ import com.me.note.common.TestModle;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.TimeZone;
 
 public class TestDate extends TestModle {
 
     @Override
     public void testAll(){
-        testPrintDate();
+      testPrintDate();
 //        testSimpleDateFormat();
 //        testZeroTime();
+        //testDateFormat();
     }
 
     private void testPrintDate(){
-        Date date = new Date(1546567200000L);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE");
+        Date date = new Date(1548817980000L);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
         System.out.println(dateFormat.format(new Date()) + ":" + new Date());
         System.out.println(dateFormat.format(date) + ":" + date);
         System.out.println(date.getDay() + ":" + new Date().getDate());
+
+        System.out.println("old " + date.getTime()/(24*3600*1000));
+        date = new Date(date.getTime() - date.getTime() % (24*3600*1000) - 8*3600*1000);
+        System.out.println("new " + date.getTime()/(24*3600*1000));
     }
 
     private void testSimpleDateFormat(){
@@ -45,5 +51,12 @@ public class TestDate extends TestModle {
         System.out.println(new Date(zeroTime));
         System.out.println(new Date(triggerTime));
         System.out.println(new Date(triggerTime + 10*24*3600*1000));
+    }
+
+    //时区问题
+    private void testDateFormat(){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        dateFormat.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+        System.out.println(dateFormat.format(new Date()));
     }
 }

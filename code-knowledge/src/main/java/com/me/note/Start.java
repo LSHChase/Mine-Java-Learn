@@ -111,15 +111,27 @@ public class Start {
 //        TestEnum testEnum = new TestEnum();
 //        testEnum.testAll();
 
-//        TestDate testDate = new TestDate();
-//        testDate.testAll();
+        TestDate testDate = new TestDate();
+        testDate.testAll();
 
 //        TestTraverseTree traverseTree = new TestTraverseTree();
 //        traverseTree.testAll();
 
 //        System.out.println("protect_group");
 
-        TestOperateFiles operateFiles = new TestOperateFiles();
-        operateFiles.testAll();
+//        TestOperateFiles operateFiles = new TestOperateFiles();
+//        operateFiles.testAll();
+
+//        TestString testString = new TestString();
+//        testString.testAll();
+
+//        TestAnnotation annotation = new TestAnnotation();
+//        annotation.testAll();
+
+//        TestList testList = new TestList();
+//        testList.testAll();
+
+//        TestUUID testUUID = new TestUUID();
+//        testUUID.testAll();
     }
 }

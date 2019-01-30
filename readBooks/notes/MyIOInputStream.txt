@@ -1,0 +1,21 @@
+I/O流读取文件内容
+流的基类
+	按照处理数据单元划分
+		字节流
+			输入流InputStream基类
+			输出流OutputStream基类
+		字符流
+			Reader作为基类
+			Writer作为基类
+InputStream的体系结构
+	InputStream
+		FileInputStream
+		StringBufferInputStream
+		PipedInputStream
+		ByteArrayInputStream
+		SequenceInputStream
+		FilterInputStream(必须掌握)
+			BufferedInputStream(必须掌握)
+			DataInputStream
+			LineNumberInputStream
+			PushbackInputStream
